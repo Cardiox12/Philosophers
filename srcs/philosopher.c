@@ -12,6 +12,6 @@ t_philosopher *init_philosopher(int id, bool fork, int state)
     philosopher = malloc(sizeof(t_philosopher));
     if (philosopher == NULL)
         return (NULL);
-    *philosopher = (t_philosopher){id, fork, state};
+    *philosopher = (t_philosopher){id, fork, state, 0};
     return (philosopher);
 }

@@ -5,6 +5,7 @@
 #ifndef PHILOSOPHER_H
 #define PHILOSOPHER_H
 
+#include <pthread.h>
 #include <stdbool.h>
 
 enum e_states {
@@ -17,6 +18,7 @@ typedef struct  s_philosopher {
     int         id;
     bool        fork;
     int         state;
+    pthread_t   thread_id;
 }               t_philosopher;
 
 t_philosopher *init_philosopher(int id, bool fork, int state);
