@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "includes/solver.h"
 #include "includes/philosophers.h"
 #include "includes/parser.h"
 
@@ -20,6 +21,17 @@ void    show_constants(t_constants *constants)
            constants->time_to_sleep,
            constants->max_eat
     );
+
+    printf("%-15s|%-15s|%-15s\n", "Id", "Fork", "Status");
+    int index = 0;
+    while (index < constants->n_philosophers){
+        printf("%-15i|%-15i|%-15s\n",
+               constants->philosophers[index]->id,
+               constants->philosophers[index]->fork,
+               (const char[3][10]){"Sleeping","Eating","Starving"}[constants->philosophers[index]->state]
+       );
+        index++;
+    }
 }
 
 int main(int argc, char **argv)
@@ -32,6 +44,7 @@ int main(int argc, char **argv)
         }
         if (set_constants(&g_constants, (const char**)argv + 1, argc - 1))
             return (EXIT_FAILURE);
+        solver_init();
         show_constants(&g_constants);
     }
     else {
