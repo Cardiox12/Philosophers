@@ -30,7 +30,8 @@ int main(int argc, char **argv)
             printf("Error, parameter cannot be negative\n");
             return (EXIT_FAILURE);
         }
-        set_constants(&g_constants, (const char**)argv + 1, argc - 1);
+        if (set_constants(&g_constants, (const char**)argv + 1, argc - 1))
+            return (EXIT_FAILURE);
         show_constants(&g_constants);
     }
     else {

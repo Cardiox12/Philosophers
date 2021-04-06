@@ -8,23 +8,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
-
-enum e_states {
-    SLEEPING,
-    EATING,
-    STARVING
-};
-
-typedef struct  s_philosopher {
-    int         id;
-    bool        fork;
-    int         state;
-}               t_philosopher;
-
-typedef struct  s_philosophers {
-    int             size;
-    t_philosopher   philosophers;
-}               t_philosophers;
+#include "philosopher.h"
 
 typedef struct  s_constants {
     int             time_to_eat;
@@ -32,9 +16,12 @@ typedef struct  s_constants {
     int             time_to_sleep;
     int             max_eat;
     int             n_philosophers;
-    t_philosophers  *philosophers;
+    t_philosopher   **philosophers;
 }               t_constants;
 
 extern t_constants g_constants;
+
+void            destroy_philosophers(t_philosopher **philosophers, int n);
+t_philosopher   **init_philosophers(int size);
 
 #endif //PHILOSOPHERS_PHILOSOPHERS_H

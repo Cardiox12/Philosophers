@@ -27,6 +27,8 @@ bool    set_constants(t_constants *constants, const char **args, int size)
     if ( size == 5 ){
         if (!set_argument(&g_constants.max_eat, ft_atoi(args[4])))
             return (true);
+    } else {
+        g_constants.max_eat = -1;
     }
     return (false);
 }
