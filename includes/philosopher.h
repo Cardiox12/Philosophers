@@ -22,5 +22,7 @@ typedef struct  s_philosopher {
 }               t_philosopher;
 
 t_philosopher *init_philosopher(int id, bool fork, int state);
+void            *philosopher_loop(void *arg);
+void            eat();
 
 #endif //PHILOSOPHER_H

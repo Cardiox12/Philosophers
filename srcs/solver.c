@@ -14,6 +14,20 @@ int solver_init()
 
 int solver_setup()
 {
+    t_philosopher **philosophers = g_constants.philosophers;
+    int index;
+
+    index = 0;
+    while (index < g_constants.n_philosophers)
+    {
+        pthread_create(&philosophers[index]->thread_id, NULL, philosopher_loop, (void*)philosophers[index]);
+        index++;
+    }
+    index = 0;
+    while (index < g_constants.n_philosophers){
+        pthread_join(philosophers[index]->thread_id, NULL);
+        index++;
+    }
     return (0);
 }
 

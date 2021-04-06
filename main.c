@@ -38,14 +38,13 @@ int main(int argc, char **argv)
 {
     if (argc == 5 || argc == 6)
     {
-        if ( set_constants( &g_constants, (const char**)argv, argc ) ){
+        if ( set_constants( (const char**)argv + 1, argc - 1 ) ){
             printf("Error, parameter cannot be negative\n");
             return (EXIT_FAILURE);
         }
-        if (set_constants(&g_constants, (const char**)argv + 1, argc - 1))
-            return (EXIT_FAILURE);
         solver_init();
         show_constants(&g_constants);
+        solver_setup();
     }
     else {
         printf("No arguments given!\n");

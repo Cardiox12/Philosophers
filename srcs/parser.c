@@ -14,7 +14,7 @@ static bool    set_argument(int *ref, int value){
     return (true);
 }
 
-bool    set_constants(t_constants *constants, const char **args, int size)
+bool    set_constants(const char **args, int size)
 {
     if (!set_argument(&g_constants.n_philosophers, ft_atoi(args[0])))
         return (true);
@@ -30,5 +30,6 @@ bool    set_constants(t_constants *constants, const char **args, int size)
     } else {
         g_constants.max_eat = -1;
     }
+    g_constants.quit = false;
     return (false);
 }

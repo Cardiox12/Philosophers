@@ -9,6 +9,6 @@
 #include <stdbool.h>
 #include "philosophers.h"
 
-bool    set_constants(t_constants *constants, const char **args, int size);
+bool    set_constants(const char **args, int size);
 
 #endif //PHILOSOPHERS_PARSER_H

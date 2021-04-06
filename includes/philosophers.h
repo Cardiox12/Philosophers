@@ -16,6 +16,7 @@ typedef struct  s_constants {
     int             time_to_sleep;
     int             max_eat;
     int             n_philosophers;
+    bool            quit;
     t_philosopher   **philosophers;
 }               t_constants;
 
