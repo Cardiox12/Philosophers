@@ -7,9 +7,11 @@
 #include <unistd.h>
 #include "../includes/philosopher.h"
 #include "../includes/philosophers.h"
+#include "../includes/utils.h"
 
 void    philosopher_eat(t_philosopher *philosopher){
     printf("Philosopher %i eat\n", philosopher->id);
+    usleep( ms_to_us( g_constants.time_to_eat ) );
 }
 
 void    philosopher_think(t_philosopher *philosopher){
@@ -18,6 +20,7 @@ void    philosopher_think(t_philosopher *philosopher){
 
 void    philosopher_sleep(t_philosopher *philosopher){
     printf("Philosopher %i sleep\n", philosopher->id);
+    usleep( ms_to_us( g_constants.time_to_sleep ) );
 }
 
 t_philosopher *init_philosopher(int id, bool fork, int state)
@@ -36,7 +39,8 @@ void    *philosopher_loop(void *arg)
     const t_philosopher *philosopher = (t_philosopher*)arg;
 
     printf("Philosopher id %i\n", philosopher->id);
-    while (true){
+    while ( true )
+    {
         philosopher_eat((t_philosopher*)philosopher);
         philosopher_sleep((t_philosopher*)philosopher);
         philosopher_think((t_philosopher*)philosopher);

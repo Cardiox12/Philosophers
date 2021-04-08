@@ -2,7 +2,7 @@
 // Created by tony on 02/04/2021.
 //
 
-#include "utils.h"
+#include "../includes/utils.h"
 
 static int	ft_isspace(char c)
 {
@@ -23,4 +23,14 @@ int ft_atoi(const char *s){
     while (*s >= '0' && *s <= '9')
         result = result * 10 + (*s++ - '0');
     return (result * sign);
+}
+
+unsigned int    ms_to_us(unsigned int t)
+{
+    return (t * TIME_FACTOR);
+}
+
+unsigned int    us_to_ms(unsigned int t)
+{
+    return (t / TIME_FACTOR);
 }

@@ -9,7 +9,7 @@ add_executable(philosophers
         main.c
         includes/philosophers.h
         srcs/philosophers.c
-        includes/utils.c
+        srcs/utils.c
         includes/utils.h
         includes/errors.h
         srcs/parser.c
