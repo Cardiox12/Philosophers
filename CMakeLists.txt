@@ -17,5 +17,5 @@ add_executable(philosophers
         includes/philosopher.h
         srcs/philosopher.c
         srcs/solver.c
-        includes/solver.h)
+        includes/solver.h includes/timer.h srcs/timer.c)
 target_link_libraries(philosophers ${CMAKE_THREAD_LIBS_INIT})
