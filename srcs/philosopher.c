@@ -4,8 +4,21 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "../includes/philosopher.h"
 #include "../includes/philosophers.h"
+
+void    philosopher_eat(t_philosopher *philosopher){
+    printf("Philosopher %i eat\n", philosopher->id);
+}
+
+void    philosopher_think(t_philosopher *philosopher){
+    printf("Philosopher %i think\n", philosopher->id);
+}
+
+void    philosopher_sleep(t_philosopher *philosopher){
+    printf("Philosopher %i sleep\n", philosopher->id);
+}
 
 t_philosopher *init_philosopher(int id, bool fork, int state)
 {
@@ -24,10 +37,13 @@ void    *philosopher_loop(void *arg)
 
     printf("Philosopher id %i\n", philosopher->id);
     while (true){
+        philosopher_eat((t_philosopher*)philosopher);
+        philosopher_sleep((t_philosopher*)philosopher);
+        philosopher_think((t_philosopher*)philosopher);
         if ( g_constants.quit ){
             printf("Philosopher %i exit\n", philosopher->id);
             pthread_exit(NULL);
         }
     }
-    return (NULL);
+    pthread_exit(NULL);
 }
